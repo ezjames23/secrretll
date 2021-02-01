@@ -26,7 +26,7 @@ SECRET_KEY = 'bao(*@hom)-)l$bbrp-42#t873mnhav=7q6&&ej)zn9bf1)n*6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['secretll.herokuapp.com']
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'learning_log.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'learning_log/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -148,6 +148,8 @@ if cwd == '/app' or cwd[:4] == '/tmp':
 
     # allow all host headers
     ALLOWED_HOSTS = ['secretll.herokuapp.com']
+
+    DEBUG = False
 
     # static asset configuration
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
