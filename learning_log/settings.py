@@ -26,7 +26,7 @@ SECRET_KEY = 'bao(*@hom)-)l$bbrp-42#t873mnhav=7q6&&ej)zn9bf1)n*6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['secretll.herokuapp.com']
 
 
 # Application definition
