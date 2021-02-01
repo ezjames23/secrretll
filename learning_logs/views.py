@@ -43,7 +43,7 @@ def new_topic(request):
             new_topic = form.save(commit=False)
             new_topic.owner = request.user
             new_topic.save()
-            return HttpResponseRedirect(reverse('topics'))
+            return HttpResponseRedirect(reverse('learning_logs:topics'))
 
     context = {'form': form}
     return render(request, 'learning_logs/new_topic.html', context)
@@ -85,7 +85,7 @@ def edit_entry(request, entry_id):
         form = EntryForm(instance=entry, data=request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('topic', args=[topic.id]))
+            return HttpResponseRedirect(reverse('learning_logs:topic', args=[topic.id]))
     
     context = {'entry': entry, 'topic': topic, 'form':form}
     return render(request, 'learning_logs/new_entry.html', context)

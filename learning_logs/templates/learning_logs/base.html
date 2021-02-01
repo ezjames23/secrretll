@@ -25,11 +25,11 @@
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <li><a>Hello, {{ user.username }}.</a></li>
                     <a class="nav-link" href="{% url 'learning_logs:topics' %}">Topics</a>
                   </li>
                   <li class="nav-item">
                     {% if user.is_authenticated %}
+                            <li><a>Hello, {{ user.username }}.</a></li>
                             <li><a class="nav-link" href="{% url 'users:logout' %}">log out</a></li>
                         {% else %}
                             <li><a class="nav-link" href="{% url 'users:register' %}">register</a></li>
