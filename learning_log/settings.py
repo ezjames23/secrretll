@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'bao(*@hom)-)l$bbrp-42#t873mnhav=7q6&&ej)zn9bf1)n*6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost']
 
@@ -147,9 +147,9 @@ if cwd == '/app' or cwd[:4] == '/tmp':
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')  
 
     # allow all host headers
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ['secretll.herokuapp.com']
 
-    DEBUG = True
+    DEBUG = False
 
     # static asset configuration
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
