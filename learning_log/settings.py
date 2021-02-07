@@ -26,7 +26,7 @@ SECRET_KEY = 'bao(*@hom)-)l$bbrp-42#t873mnhav=7q6&&ej)zn9bf1)n*6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -147,7 +147,7 @@ if cwd == '/app' or cwd[:4] == '/tmp':
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')  
 
     # allow all host headers
-    ALLOWED_HOSTS = ['*]
+    ALLOWED_HOSTS = ['*']
 
     DEBUG = True
 
