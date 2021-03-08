@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
@@ -11,21 +12,28 @@ def index(request):
     """The homepage for learning Log"""
     return render(request, 'learning_logs/index.html')
 
-@login_required
+def _get_topics_for_user(user):
+    " returns a queryset of topics the user can access "
+    q = Q(public=True)
+    # if django < 1.10 you want "user.is_authenticated()" (with parens)
+    if user.is_authenticated:
+       # adds user's own private topics to the query
+       q = q | Q(public=False, owner=user)
+
+    return Topic.objects.filter(q)
+
 def topics(request):
     """show all topics"""
-    topics = Topic.objects.filter(owner=request.user).order_by('date_added')
+    topics = _get_topics_for_user(request.user).order_by('date_added')
     context = {'topics': topics}
     return render(request, 'learning_logs/topics.html', context)
 
-@login_required
+
 def topic(request, topic_id):
     """Show a single topic and all its entries"""
-    topic = Topic.objects.get(id=topic_id)
+    topics = _get_topics_for_user(request.user)
+    topic = get_object_or_404(topics, id=topic_id)
     # make sure that the topic belongs to the current user
-    if topic.owner != request.user:
-        raise Http404
-
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic':topic, 'entries': entries}
     return render(request, 'learning_logs/topic.html', context)
