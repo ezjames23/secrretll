@@ -27,7 +27,7 @@ with open(os.path.join(BASE_DIR, 'SECRET_KEY')) as f:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['.secretll.herokuapp.com']
 
 
 # Application definition
