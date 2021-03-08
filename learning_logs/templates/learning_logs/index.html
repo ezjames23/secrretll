@@ -1,13 +1,30 @@
 {% extends "learning_logs/base.html" %}
 
+{% load static %}
+
 {% block header %}
-    <div class='jumbotron'>
-        <h1>Track your learning with this app from James Kenneth Ines!</h1>
+
+    <style type="text/css">
+    .jumbotron{
+        margin-top: 20px;
+        background-image: url("{% static 'images/brain.jpg' %}");
+        background-size: cover;
+
+    }
+    
+    </style>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Start your own learning journey about the things that interests you!</h1>
+            <p><a class="btn btn-primary btn-lg" href="{% url 'users:register' %}" role="button">Register</a></p>
+        </div>
     </div>
+    
 {% endblock header %}
 
 {% block content %}
     <h2>
-        <a href="{% url 'users:register' %}">Register an account</a> to start your own learning journey about the things that interests you.
+        A project of Hybyli Software Solutions. Please visit us <a href="https://hybyli.herokuapp.com" target="_blank">here</a>.
     </h2>
 {% endblock content %}
