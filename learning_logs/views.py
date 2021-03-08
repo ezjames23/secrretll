@@ -11,7 +11,6 @@ def index(request):
     """The homepage for learning Log"""
     return render(request, 'learning_logs/index.html')
 
-
 def topics(request):
     """show all topics"""
     topics = Topic.objects.filter(owner=request.user).order_by('date_added')
